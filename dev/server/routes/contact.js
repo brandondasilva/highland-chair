@@ -1,8 +1,8 @@
 
 'use strict';
 
-const clientName = "CLIENT NAME HERE";
-const clientEmail = "info@email.com"
+const clientName = "Highland Chair Co.";
+const clientEmail = "info@highlandchair.com" // TODO Change to actual domain
 
 var moment = require('moment-timezone');
 

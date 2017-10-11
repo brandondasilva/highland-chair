@@ -327,3 +327,5 @@ function slackPost(data) {
     body: data
   });
 }
+
+module.exports = router;

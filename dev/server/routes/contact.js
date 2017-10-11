@@ -21,6 +21,8 @@ router.get ('/', function(req, res) {
 router.post ('/', function(req, res) {
   res.set('Access-Control-Allow-Origin', '*');
 
+  req.body['name'] = req.body['first-name'] + " " + req.body['last-name'];
+
   // Configuring the email parameters for composing
   var from_email = new helper.Email(clientEmail, clientName);
   var to_email = new helper.Email('brandon@bdsdesign.co'); // TODO Change to email
@@ -44,11 +46,11 @@ router.post ('/', function(req, res) {
           "fields": [
             {
               "title": "First Name",
-              "value": req.body['firstname'],
+              "value": req.body['first-name'],
               "short": true
             }, {
               "title": "Last Name",
-              "value": req.body['lastname'],
+              "value": req.body['last-name'],
               "short": true
             }, {
               "title": "Email Address",
@@ -64,14 +66,14 @@ router.post ('/', function(req, res) {
               "short": false
             }, {
               "title": "Added to mailing list?",
-              "value": (req.body['mailinglist'] == 'true') ? "Yes" : "No",
+              "value": (req.body['mailing-list'] == 'true') ? "Yes" : "No",
               "short": false
             }
           ]
         }
       ]
     },
-    "mailinglist": {
+    "mailing-list": {
       "attachments": [
         {
           "fallback": "A new contact has subscribed to the mailing list!",
@@ -82,11 +84,11 @@ router.post ('/', function(req, res) {
           "fields": [
             {
               "title": "First Name",
-              "value": req.body['firstname'],
+              "value": req.body['first-name'],
               "short": true
             }, {
               "title": "Last Name",
-              "value": req.body['lastname'],
+              "value": req.body['last-name'],
               "short": true
             }, {
               "title": "Email Address",
@@ -100,15 +102,15 @@ router.post ('/', function(req, res) {
   }
 
   // Check to see if they want to be added to the mailing list
-  if (req.body['mailinglist'] == 'true') {
+  if (req.body['mailing-list'] == 'true') {
 
     var contactRequest = sg.emptyRequest({
       method: 'POST',
       path: '/v3/contactdb/recipients',
       body: [{
         "email": req.body['email'],
-        "first_name": req.body['firstname'],
-        "last_name": req.body['lastname']
+        "first_name": req.body['first-name'],
+        "last_name": req.body['last-name']
       }]
     });
 

@@ -31,7 +31,7 @@ router.post ('/', function(req, res) {
   var user_subject = clientName + " - Contact Form Submission Confirmation";
 
   // Construct email requests to be sent to MTG and a confirmation to the user using custom made templates
-  var request1 = composeMail(from_email, client_subject, to_email, req.body, process.env.CONTACT_CLIENT_TEMPLATE);
+  var request1 = composeMail(user_email, client_subject, to_email, req.body, process.env.CONTACT_CLIENT_TEMPLATE);
   var request2 = composeMail(from_email, user_subject, user_email, req.body, process.env.CONTACT_USER_TEMPLATE);
 
   // Setting up the Slack post messages
@@ -143,7 +143,7 @@ function composeMail(from_email, subject, to_email, form_data, template_id) {
 
   // Set up personalizations for the email template using the form data from the parameters
   mail.personalizations[0].addSubstitution( new helper.Substitution('-name-', form_data['name']) );
-  mail.personalizations[0].addSubstitution( new helper.Substitution('-firstname-', form_data['firstname']) );
+  mail.personalizations[0].addSubstitution( new helper.Substitution('-firstname-', form_data['first-name']) );
   mail.personalizations[0].addSubstitution( new helper.Substitution('-email-', form_data['email']) );
   mail.personalizations[0].addSubstitution( new helper.Substitution('-subject-', form_data['subject']) );
 
@@ -307,9 +307,6 @@ function sendgridContactRequest(req, slackReq) {
     sendgridRequest(mailinglistRequest, slackReq);
   });
 }
-
-
-
 
 /**
  * Post the content being passed into the function to Slack through the webhook.

@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(helmet());
 
-// Forms
+// Contact Form
 var contact = require('./routes/contact');
 
 app.use('/contact', contact);

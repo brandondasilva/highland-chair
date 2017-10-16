@@ -114,7 +114,7 @@ router.post ('/', function(req, res) {
       }]
     });
 
-    sendgridContactRequest(contactRequest, slackParams['mailinglist']);
+    sendgridContactRequest(contactRequest, slackParams['mailing-list']);
   }
 
   sendgridRequest(request1, undefined);
@@ -144,6 +144,7 @@ function composeMail(from_email, subject, to_email, form_data, template_id) {
   // Set up personalizations for the email template using the form data from the parameters
   mail.personalizations[0].addSubstitution( new helper.Substitution('-name-', form_data['name']) );
   mail.personalizations[0].addSubstitution( new helper.Substitution('-firstname-', form_data['first-name']) );
+  mail.personalizations[0].addSubstitution( new helper.Substitution('-mailinglist-', form_data['mailing-list']) );
   mail.personalizations[0].addSubstitution( new helper.Substitution('-email-', form_data['email']) );
   mail.personalizations[0].addSubstitution( new helper.Substitution('-subject-', form_data['subject']) );
 

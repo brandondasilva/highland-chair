@@ -1,4 +1,3 @@
-// Gruntfile for everything MTG
 
 module.exports = function(grunt) {
 

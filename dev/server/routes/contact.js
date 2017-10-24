@@ -25,8 +25,7 @@ router.post ('/', function(req, res) {
 
   // Configuring the email parameters for composing
   var from_email = new helper.Email(clientEmail, clientName);
-  // var to_email = new helper.Email(clientEmail, clientName);
-  var to_email = new helper.Email('brandon@bdsdesign.co');
+  var to_email = new helper.Email(clientEmail, clientName);
   var user_email = new helper.Email(req.body['email'], req.body['name']);
   var client_subject = "New contact form submission on the " + clientName + " website!";
   var user_subject = clientName + " - Contact Form Submission Confirmation";

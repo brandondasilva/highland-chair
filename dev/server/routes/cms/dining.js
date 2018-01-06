@@ -14,7 +14,7 @@ router.get ('/', function(req, res) {
   var dining = webflow.items({ collectionId: process.env.WEBFLOW_DINING_ID });
 
   dining.then(function(i){
-    res.send({ "bar-count": i.count; });
+    res.send({ "bar-count": i.count });
   });
 });
 

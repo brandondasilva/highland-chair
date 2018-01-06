@@ -16,7 +16,7 @@ router.get ('/', function(req, res) {
     "additionalPages": 2
   }
 
-  res.send(testObj);
+  res.send(result);
 });
 
 module.exports = router;

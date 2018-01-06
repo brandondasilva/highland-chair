@@ -24,6 +24,7 @@ router.post ('/', function(req, res) {
 
   var a = dining.then(function(i){
     console.log(i.count);
+    return i.count;
   });
   console.log(a);
   bar.then(function(i){

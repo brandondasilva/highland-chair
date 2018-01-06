@@ -7,10 +7,6 @@ var express = require('express');
 var request = require('request');
 var router = express.Router();
 
-// Set up and configure Webflow
-var Webflow = require('webflow-api');
-var webflow = new Webflow({ token: process.env.WEBFLOW_TOKEN });
-
 router.get ('/', function(req, res) {
   res.set('Access-Control-Allow-Origin', '*');
   res.send('API v1 GET: Hello World!');
@@ -19,23 +15,67 @@ router.get ('/', function(req, res) {
 router.post ('/', function(req, res) {
   res.set('Access-Control-Allow-Origin', '*');
 
-  var dining = webflow.items({ collectionId: process.env.WEBFLOW_DINING_ID });
-  var bar    = webflow.items({ collectionId: process.env.WEBFLOW_BAR_ID });
+  var result = {};
+  var origB = req.body['orig-bar'];
+  var currB = req.body['curr-bar'];
+  var origD = req.body['orig-dining'];
+  var currD = req.body['curr-dining'];
 
-  counts.then(function(i){
-    console.log(i.count);
-  });
+  var x1 = Math.floor(origB/6);
+  var x2 = Math.floor(currB/6);
+  var y1 = Math.floor(origD/6);
+  var y2 = Math.floor(currD/6);
 
-  bar.then(function(i){
-    console.log(i.count);
-  });
+  if ((x1 == x2) && (y1 == y2)) {
 
-  var result = {
-    "update": false,
-    "dining-count": 14,
-    "bar-count": 20,
-    "type": "Dining",
-    "additionalPages": 2
+    result = {
+      "update": false,
+      "dining-count": currD,
+      "bar-count": currB,
+      "todo": "",
+      "description": ""
+    }
+
+  } else if ((x1 != x2) && (y1 != y2)) {
+
+    var todo = "Both Dining and Bar CMS pages need edits on Highland";
+    var description = "The dining page requires " + y2 + " pages and the bar page requires " + x2 + " pages.";
+
+    result = {
+      "update": true,
+      "dining-count": currD,
+      "bar-count": currB,
+      "todo": todo,
+      "description": description
+    }
+
+  } else {
+
+    if (x1 != x2) {
+      var todo = "Change Bar page count on Highland";
+      var description = "The bar page requires " + x2 + " pages.";
+
+      result = {
+        "update": true,
+        "dining-count": currD,
+        "bar-count": currB,
+        "todo": todo,
+        "description": description
+      }
+    }
+
+    if (y1 != y2) {
+      var todo = "Change Dining page count on Highland";
+      var description = "The dining page requires " + y2 + " pages.";
+
+      result = {
+        "update": true,
+        "dining-count": currD,
+        "bar-count": currB,
+        "todo": todo,
+        "description": description
+      }
+    }
   }
 
   res.send(result);

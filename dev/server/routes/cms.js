@@ -22,11 +22,10 @@ router.post ('/', function(req, res) {
   var dining = webflow.items({ collectionId: process.env.WEBFLOW_DINING_ID });
   var bar    = webflow.items({ collectionId: process.env.WEBFLOW_BAR_ID });
 
-  var a = dining.then(function(i){
+  counts.then(function(i){
     console.log(i.count);
-    return i.count;
   });
-  console.log(a);
+
   bar.then(function(i){
     console.log(i.count);
   });

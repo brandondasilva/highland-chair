@@ -23,7 +23,11 @@ app.use('/contact', contact);
 
 // CMS Entry Checker
 var cms = require('./routes/cms');
+var dining = require('./routes/cms/dining');
+var bar = require('./routes/cms/bar');
 app.use('/cms', cms);
+app.use('/dining', dining);
+app.use('/bar', bar);
 
 app.get('/', function(req, res) {
   res.set('Access-Control-Allow-Origin', '*');

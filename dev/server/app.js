@@ -22,8 +22,8 @@ var contact = require('./routes/contact');
 app.use('/contact', contact);
 
 // CMS Entry Checker
-var cmsCheck = require('/routes/cms');
-app.use('/cms', cmsCheck);
+var cms = require('./routes/cms');
+app.use('/cms', cms);
 
 app.get('/', function(req, res) {
   res.set('Access-Control-Allow-Origin', '*');

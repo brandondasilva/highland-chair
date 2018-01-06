@@ -10,9 +10,12 @@ var router = express.Router();
 router.get ('/', function(req, res) {
   res.set('Access-Control-Allow-Origin', '*');
 
-  
+  var testObj = {
+    "type": "Dining",
+    "additionalPages": 2
+  }
 
-  res.send('API v1 GET: Hello World!');
+  res.send(testObj);
 });
 
 module.exports = router;

@@ -10,7 +10,8 @@ var router = express.Router();
 router.get ('/', function(req, res) {
   res.set('Access-Control-Allow-Origin', '*');
 
-  var testObj = {
+  var result = {
+    "update": true,
     "type": "Dining",
     "additionalPages": 2
   }

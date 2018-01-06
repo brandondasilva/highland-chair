@@ -22,8 +22,12 @@ router.post ('/', function(req, res) {
   var dining = webflow.items({ collectionId: process.env.WEBFLOW_DINING_ID });
   var bar    = webflow.items({ collectionId: process.env.WEBFLOW_BAR_ID });
 
-  dining.then(i => console.log(i));
-  bar.then(i => console.log(i));
+  dining.then(function(i){
+    console.log(i.count);
+  });
+  bar.then(function(i){
+    console.log(i.count);
+  });
 
   var result = {
     "update": false,

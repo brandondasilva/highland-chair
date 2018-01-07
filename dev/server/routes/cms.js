@@ -124,7 +124,7 @@ router.post ('/', function(req, res) {
             "value": y1,
             "short": true
           }, {
-            "title": "Original Dining page count:",
+            "title": "Current Dining page count:",
             "value": y2,
             "short": true
           },

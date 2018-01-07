@@ -78,7 +78,81 @@ router.post ('/', function(req, res) {
     }
   }
 
+  var slackParams = {
+    "attachments": [
+      {
+        "pretext": "*Highland Chair Co. Weekly CMS Checker*",
+        "mrkdwn": true
+      }, {
+        "pretext": "CMS Counts",
+        "title": "CMS Counts for all collections",
+        "text": "All of the original counts from the last check and the updates",
+        "fields": [
+          {
+            "title": "Original Bar CMS item count:",
+            "value": origB,
+            "short": true
+          }, {
+            "title": "Current Bar CMS item count:",
+            "value": currB,
+            "short": true
+          }, {
+            "title": "Original Dining CMS item count:",
+            "value": origD,
+            "short": true
+          }, {
+            "title": "Current Dining CMS item count:",
+            "value": currD,
+            "short": true
+          }
+        ]
+      }, {
+        "pretext": "Pagination page counts",
+        "title": "Pagination page counts",
+        "text": "The original and current page counts for both CMS display pages",
+        "fields": [
+          {
+            "title": "Original Bar page count:",
+            "value": x1,
+            "short": true
+          }, {
+            "title": "Current Bar page count:",
+            "value": x2,
+            "short": true
+          }, {
+            "title": "Original Dining page count:",
+            "value": y1,
+            "short": true
+          }, {
+            "title": "Original Dining page count:",
+            "value": y2,
+            "short": true
+          },
+        ]
+      }
+    ]
+  }
+
+  slackPost(slackParams);
+
   res.send(result);
 });
+
+/**
+ * Post the content being passed into the function to Slack through the webhook.
+ * This is only being sent to the channel on the BDS Slack team, so only the one
+ * webhook is needed.
+ *
+ * @param {Object} data The content to populate the Slack post
+ */
+function slackPost(data) {
+
+  request({
+    url: process.env.SLACK_WEBHOOK_URL,
+    method: "POST",
+    json: true,
+    body: data
+  });
+}
 
 module.exports = router;

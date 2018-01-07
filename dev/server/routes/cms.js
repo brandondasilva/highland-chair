@@ -82,6 +82,7 @@ router.post ('/', function(req, res) {
     "attachments": [
       {
         "pretext": "*Highland Chair Co. Weekly CMS Checker*",
+        "username": "cms-bot"
         "mrkdwn": true
       }, {
         "pretext": "CMS Counts",

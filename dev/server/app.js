@@ -19,8 +19,15 @@ app.use(helmet());
 
 // Contact Form
 var contact = require('./routes/contact');
-
 app.use('/contact', contact);
+
+// CMS Entry Checker
+var cms = require('./routes/cms');
+var dining = require('./routes/cms/dining');
+var bar = require('./routes/cms/bar');
+app.use('/cms', cms);
+app.use('/cms/dining', dining);
+app.use('/cms/bar', bar);
 
 app.get('/', function(req, res) {
   res.set('Access-Control-Allow-Origin', '*');

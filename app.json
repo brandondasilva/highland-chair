@@ -1,0 +1,11 @@
+{
+  "name": "Highland Chair Services",
+  "env": {
+    "WEBFLOW_TOKEN": { "required": true },
+    "SLACK_WEBHOOK_URL": { "required": true },
+    "WEBFLOW_SITE": { "required": true },
+    "WEBFLOW_BAR_ID": { "required": true },
+    "WEBFLOW_DINING_ID": { "required": true },
+    "WEBFLOW_COUNT_ID": { "required": true }
+  }
+}

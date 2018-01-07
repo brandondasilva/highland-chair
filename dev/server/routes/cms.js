@@ -81,9 +81,8 @@ router.post ('/', function(req, res) {
   var slackParams = {
     "attachments": [
       {
-        "pretext": "*Highland Chair Co. Weekly CMS Checker*",
+        "pretext": "Highland Chair Co. Weekly CMS Checker",
         "username": "cms-bot"
-        "mrkdwn": true
       }, {
         "pretext": "CMS Counts",
         "title": "CMS Counts for all collections",

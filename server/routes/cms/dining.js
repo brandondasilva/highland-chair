@@ -1,0 +1,1 @@
+"use strict";var express=require("express"),router=express.Router(),Webflow=require("webflow-api"),webflow=new Webflow({token:process.env.WEBFLOW_TOKEN});router.get("/",function(a,b){b.set("Access-Control-Allow-Origin","*");var c=webflow.items({collectionId:process.env.WEBFLOW_DINING_ID});c.then(function(a){b.send({"dining-count":a.count})})}),module.exports=router;

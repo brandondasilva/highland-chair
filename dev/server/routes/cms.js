@@ -21,10 +21,10 @@ router.post ('/', function(req, res) {
   var origD = req.body['orig-dining'];
   var currD = req.body['curr-dining'];
 
-  var x1 = Math.floor(origB/6);
-  var x2 = Math.floor(currB/6);
-  var y1 = Math.floor(origD/6);
-  var y2 = Math.floor(currD/6);
+  var x1 = Math.ceil(origB/6);
+  var x2 = Math.ceil(currB/6);
+  var y1 = Math.ceil(origD/6);
+  var y2 = Math.ceil(currD/6);
 
   if ((x1 == x2) && (y1 == y2)) {
 

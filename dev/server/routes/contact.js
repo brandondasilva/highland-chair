@@ -42,34 +42,7 @@ router.post ('/', function(req, res) {
           "fallback": "A new form on the " + clientName + " website has been submitted!",
           "pretext": "A new form on the " + clientName + " website has been submitted!",
           "title": "New Contact Form Submission",
-          "text": "The contents of the form are outline below for reference.",
-          "fields": [
-            {
-              "title": "First Name",
-              "value": req.body['first-name'],
-              "short": true
-            }, {
-              "title": "Last Name",
-              "value": req.body['last-name'],
-              "short": true
-            }, {
-              "title": "Email Address",
-              "value": req.body['email'],
-              "short": false
-            }, {
-              "title": "Subject",
-              "value": req.body['subject'],
-              "short": false
-            }, {
-              "title": "Message",
-              "value": req.body['message'],
-              "short": false
-            }, {
-              "title": "Added to mailing list?",
-              "value": (req.body['mailing-list'] == 'true') ? "Yes" : "No",
-              "short": false
-            }
-          ]
+          "text": "A new form was submitted on the " + clientName + " website."
         }
       ]
     },
@@ -80,22 +53,7 @@ router.post ('/', function(req, res) {
           "color": "#1BDB6C",
           "pretext": "A new contact has subscribed to the mailing list!",
           "title": "New Contact Added to the Mailing List",
-          "text": "The new subscriber's information and upload status is outlined below.",
-          "fields": [
-            {
-              "title": "First Name",
-              "value": req.body['first-name'],
-              "short": true
-            }, {
-              "title": "Last Name",
-              "value": req.body['last-name'],
-              "short": true
-            }, {
-              "title": "Email Address",
-              "value": req.body['email'],
-              "short": false
-            }
-          ]
+          "text": "New contact added to the mailing list."
         }
       ]
     }
